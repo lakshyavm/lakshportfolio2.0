@@ -186,7 +186,7 @@ ul {
 
 
 
-/* Ambient Background Blobs */
+/* Ambient Background Blobs (RAM-Optimized) */
 .bg-blobs-container {
   position: fixed;
   top: 0;
@@ -201,16 +201,16 @@ ul {
 .bg-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(140px);
-  opacity: 0.45;
-  mix-blend-mode: multiply;
+  opacity: 0.65;
+  /* Removed expensive filter: blur() and mix-blend-mode to reduce RAM/CPU usage */
+  will-change: transform;
   animation: blob-float 25s infinite alternate ease-in-out;
 }
 
 .blob-1 {
   width: 500px;
   height: 500px;
-  background-color: var(--blob-color-1);
+  background: radial-gradient(circle, var(--blob-color-1) 0%, transparent 70%);
   top: -10%;
   left: -10%;
   animation-duration: 28s;
@@ -219,7 +219,7 @@ ul {
 .blob-2 {
   width: 600px;
   height: 600px;
-  background-color: var(--blob-color-2);
+  background: radial-gradient(circle, var(--blob-color-2) 0%, transparent 70%);
   bottom: -15%;
   right: -5%;
   animation-duration: 32s;
@@ -228,7 +228,7 @@ ul {
 .blob-3 {
   width: 450px;
   height: 450px;
-  background-color: var(--blob-color-3);
+  background: radial-gradient(circle, var(--blob-color-3) 0%, transparent 70%);
   top: 40%;
   left: 60%;
   animation-duration: 24s;
@@ -236,24 +236,24 @@ ul {
 
 @keyframes blob-float {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
   33% {
-    transform: translate(50px, -70px) scale(1.15);
+    transform: translate3d(50px, -70px, 0) scale(1.15);
   }
   66% {
-    transform: translate(-40px, 50px) scale(0.9);
+    transform: translate3d(-40px, 50px, 0) scale(0.9);
   }
   100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
 /* Glassmorphism Card Architecture */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(25px) saturate(190%);
-  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
   box-shadow: 
@@ -298,8 +298,8 @@ ul {
   justify-content: space-between;
   padding: 1.25rem 3rem;
   background: var(--bg-navbar);
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-glass);
   transition: var(--transition-smooth), background-color 0.3s ease, border-color 0.3s ease;
 }

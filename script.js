@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Single animation loop to handle parallax background blobs
   function updateVisuals() {
-    // Apply background blob transforms based on mouse fraction
+    // Apply background blob transforms based on mouse fraction using translate3d for GPU acceleration
     blobs.forEach((blob, idx) => {
       const depth = (idx + 1) * 20;
       const moveX = xFraction * depth;
       const moveY = yFraction * depth;
-      blob.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      blob.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
     });
     isVisualsUpdating = false;
   }
