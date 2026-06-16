@@ -8,15 +8,30 @@
   <meta name="keywords" content="Lakshya Verma, AI, Data Science, Portfolio, Web Development, Computer Science" />
   <meta name="author" content="Lakshya Verma" />
 
-  <!-- Fonts: Space Grotesk (headings) + Archivo (body) -->
+  <!-- Preconnect to external assets to optimize loading speeds -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://unpkg.com" />
+
+  <!-- Fonts: Space Grotesk (headings) + Archivo (body) -->
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  <!-- Phosphor Icons (Deferred for non-blocking page load) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
 
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Critical inline script to initialize theme and prevent Flash of Unstyled Content (FOUC) -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initialTheme);
+    })();
+  </script>
 </head>
 <body>
 
@@ -350,6 +365,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

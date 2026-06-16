@@ -1,9 +1,3 @@
-// Initialize theme from localStorage or system preferences immediately to prevent flash
-const savedTheme = localStorage.getItem('theme');
-const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-document.documentElement.setAttribute('data-theme', initialTheme);
-
 document.addEventListener('DOMContentLoaded', () => {
   // Select DOM elements for parallax blobs and navigation.
   const blobs = document.querySelectorAll('.bg-blob');
