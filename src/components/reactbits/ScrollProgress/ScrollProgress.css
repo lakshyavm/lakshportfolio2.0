@@ -1,0 +1,26 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 101;
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  will-change: transform;
+}
+
+.scroll-progress__glow {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  filter: blur(6px);
+  opacity: 0.6;
+  will-change: transform;
+}
