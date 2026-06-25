@@ -781,8 +781,9 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* NO filter — filters re-composite every video frame and kill perf.
-     Darkening is handled entirely by the overlay div below. */
+  /* Shift focus toward the right side of the video */
+  object-position: 65% center;
+  /* NO filter — darkening handled by overlay div */
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -933,13 +934,46 @@ h2 {
   .about__stats {
     grid-template-columns: repeat(2, 1fr);
   }
+  /* Video: show more right side on mobile */
+  .video-bg__video {
+    object-position: 70% center;
+  }
+  /* Lighter overlay on mobile so video is more visible */
+  .video-bg__overlay {
+    background:
+      linear-gradient(180deg,
+        rgba(2, 6, 23, 0.5) 0%,
+        rgba(2, 6, 23, 0.35) 35%,
+        rgba(2, 6, 23, 0.5) 65%,
+        var(--bg) 100%
+      );
+  }
 }
 
 @media (max-width: 480px) {
   .hero__title {
     font-size: 2.8rem;
   }
+  .hero__subtitle {
+    font-size: 0.95rem;
+  }
+  .hero__typewriter {
+    font-size: 0.92rem;
+    min-height: 44px;
+  }
+  .hero__kicker {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+  }
+  .section--hero {
+    min-height: 100vh;
+    padding: 100px 16px;
+  }
   .about__stats {
     grid-template-columns: 1fr 1fr;
+  }
+  /* Even more right-shifted on small phones */
+  .video-bg__video {
+    object-position: 75% center;
   }
 }
