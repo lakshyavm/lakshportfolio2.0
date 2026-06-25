@@ -48,7 +48,7 @@ export default function Home() {
         <Experience />
 
         {/* Video background for hero section */}
-        <VideoBackground src="/videos/hero-bg.mp4" />
+        <VideoBackground src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/videos/hero-bg.mp4`} />
 
         {/* Scanline overlay */}
         <div className="scanline" />

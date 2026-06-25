@@ -1,8 +1,13 @@
+const basePath = '/lakshportfolio2.0';
+
 const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
   trailingSlash: true,
-  basePath: '/lakshportfolio2.0',
-  assetPrefix: '/lakshportfolio2.0/',
+  basePath,
+  assetPrefix: `${basePath}/`,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 export default nextConfig;
